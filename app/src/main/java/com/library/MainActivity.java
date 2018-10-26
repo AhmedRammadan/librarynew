@@ -1,8 +1,12 @@
 package com.library;
 
+import android.Manifest;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TabLayout;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,13 +17,38 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+    RecyclerView recyclerMain ;
+    ArrayList<ItemReBooks> itemReBooks;
+    ArrayList<ItemRecMain> itemRecMains;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        itemReBooks = new ArrayList<>();
+        itemReBooks.add(new ItemReBooks(R.drawable.ic_action_name,"ahmed","159m"));
+        itemReBooks.add(new ItemReBooks(R.drawable.ic_action_name,"ahmed","159m"));
+        itemReBooks.add(new ItemReBooks(R.drawable.ic_action_name,"ahmed","159m"));
+        itemReBooks.add(new ItemReBooks(R.drawable.ic_action_name,"ahmed","159m"));
+        itemReBooks.add(new ItemReBooks(R.drawable.ic_action_name,"ahmed","159m"));
+        AdapterReBooks adapterReBooks = new AdapterReBooks(MainActivity.this,itemReBooks);
+
+
+        itemRecMains = new ArrayList<>();
+        itemRecMains.add(new ItemRecMain("Ramadan",adapterReBooks));
+        AdapterReMain adapterReMain =new AdapterReMain(MainActivity.this,itemRecMains);
+
+        recyclerMain = findViewById(R.id.RecyclerViewMain);
+        recyclerMain.setLayoutManager(new LinearLayoutManager(this));
+        recyclerMain.setAdapter(adapterReMain);
+
+
+
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

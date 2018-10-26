@@ -2,6 +2,7 @@ package com.library;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,7 +28,9 @@ public class AdapterReMain extends RecyclerView.Adapter<ViewHolderMain> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolderMain viewHolderMain, int i) {
-
+        viewHolderMain.category.setText(mains.get(i).getCategroy());
+        viewHolderMain.recyclerBooks.setLayoutManager(new LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false));
+        viewHolderMain.recyclerBooks.setAdapter(mains.get(i).getAdapterReBooks());
     }
 
     @Override

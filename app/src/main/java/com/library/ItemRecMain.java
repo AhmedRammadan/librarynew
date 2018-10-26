@@ -1,8 +1,8 @@
 package com.library;
 
 public class ItemRecMain {
-    String categroy;
-    AdapterReBooks adapterReBooks ;
+    private String categroy;
+   private AdapterReBooks adapterReBooks ;
 
     public ItemRecMain(String categroy, AdapterReBooks adapterReBooks) {
         this.categroy = categroy;

@@ -22,29 +22,21 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     RecyclerView recyclerMain ;
-    ArrayList<ItemReBooks> itemReBooks;
+    ArrayList<ItemReBooks> kits ,learn ,Psychologyandselfdevelopment;
     ArrayList<ItemRecMain> itemRecMains;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        itemReBooks = new ArrayList<>();
-        itemReBooks.add(new ItemReBooks(R.drawable.ic_action_name,"ahmed","159m"));
-        itemReBooks.add(new ItemReBooks(R.drawable.ic_action_name,"ahmed","159m"));
-        itemReBooks.add(new ItemReBooks(R.drawable.ic_action_name,"ahmed","159m"));
-        itemReBooks.add(new ItemReBooks(R.drawable.ic_action_name,"ahmed","159m"));
-        itemReBooks.add(new ItemReBooks(R.drawable.ic_action_name,"ahmed","159m"));
-        AdapterReBooks adapterReBooks = new AdapterReBooks(MainActivity.this,itemReBooks);
 
 
-        itemRecMains = new ArrayList<>();
-        itemRecMains.add(new ItemRecMain("Ramadan",adapterReBooks));
-        AdapterReMain adapterReMain =new AdapterReMain(MainActivity.this,itemRecMains);
 
-        recyclerMain = findViewById(R.id.RecyclerViewMain);
+
+
+        /*recyclerMain = findViewById(R.id.RecyclerViewMain);
         recyclerMain.setLayoutManager(new LinearLayoutManager(this));
-        recyclerMain.setAdapter(adapterReMain);
+        recyclerMain.setAdapter(adapterReMain);*/
 
 
 

@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 public class AdapterReBooks extends RecyclerView.Adapter<ViewHolderBooks> {
@@ -29,7 +31,7 @@ public class AdapterReBooks extends RecyclerView.Adapter<ViewHolderBooks> {
     public void onBindViewHolder(@NonNull ViewHolderBooks viewHolderBooks, int i) {
         viewHolderBooks.size.setText(books.get(i).getSize());
         viewHolderBooks.title.setText(books.get(i).getTitle());
-        viewHolderBooks.imgbook.setImageResource(books.get(i).getImage());
+        Picasso.get().load(books.get(i).getIamge()).into(viewHolderBooks.imgbook);
     }
 
     @Override

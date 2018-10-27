@@ -28,7 +28,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    RecyclerView recyclerMain ;
+    RecyclerView recyclerMain ,recyclerbooks;
     ArrayList<ItemReBooks> arrayListkids ,arrayListlearn ,arrayListPsychologyandselfdevelopment;
     AdapterReBooks adapterRekids,adapterRelearn,adapterPsychologyandselfdevelopment;
     ArrayList<ItemRecMain> itemRecMains;
@@ -37,6 +37,8 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        recyclerbooks = findViewById(R.id.RecyclerViewBooks);
+        recyclerbooks.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false));
          kids();
 
 
@@ -160,4 +162,5 @@ public class MainActivity extends AppCompatActivity
             }
         });
     }
+
 }

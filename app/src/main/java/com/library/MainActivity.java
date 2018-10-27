@@ -16,6 +16,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -36,14 +37,26 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+         kids();
 
 
 
+        itemRecMains = new ArrayList<>();
+        itemRecMains.add(new ItemRecMain("kits",adapterRekids));
+        itemRecMains.add(new ItemRecMain("kits",adapterRekids));
+        itemRecMains.add(new ItemRecMain("kits",adapterRekids));
+        itemRecMains.add(new ItemRecMain("kits",adapterRekids));
+        itemRecMains.add(new ItemRecMain("kits",adapterRekids));
+        itemRecMains.add(new ItemRecMain("kits",adapterRekids));
+        itemRecMains.add(new ItemRecMain("kits",adapterRekids));
+        itemRecMains.add(new ItemRecMain("kits",adapterRekids));
+        itemRecMains.add(new ItemRecMain("kits",adapterRekids));
 
+        AdapterReMain adapterReMain =new AdapterReMain(MainActivity.this,itemRecMains);
 
-        /*recyclerMain = findViewById(R.id.RecyclerViewMain);
+        recyclerMain = findViewById(R.id.RecyclerViewMain);
         recyclerMain.setLayoutManager(new LinearLayoutManager(this));
-        recyclerMain.setAdapter(adapterReMain);*/
+        recyclerMain.setAdapter(adapterReMain);
 
 
 

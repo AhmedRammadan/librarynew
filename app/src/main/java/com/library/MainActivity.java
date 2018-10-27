@@ -17,18 +17,25 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     RecyclerView recyclerMain ;
-    ArrayList<ItemReBooks> kits ,learn ,Psychologyandselfdevelopment;
+    ArrayList<ItemReBooks> arrayListkids ,arrayListlearn ,arrayListPsychologyandselfdevelopment;
+    AdapterReBooks adapterRekids,adapterRelearn,adapterPsychologyandselfdevelopment;
     ArrayList<ItemRecMain> itemRecMains;
+    DatabaseReference refkdids , reflearn , refPsychologyandselfdevelopment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
 
 
@@ -118,5 +125,26 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    void kids(){
+        arrayListkids =new ArrayList<>();
+        refkdids = FirebaseDatabase.getInstance().getReference().child("books").child("kids Stories");
+        refkdids.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                arrayListkids.clear();
+                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
+                    ItemReBooks itemReBooks = dataSnapshot1.getValue(ItemReBooks.class);
+                    arrayListkids.add(itemReBooks);
+                }
+                adapterRekids = new AdapterReBooks(MainActivity.this,arrayListkids);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 }
